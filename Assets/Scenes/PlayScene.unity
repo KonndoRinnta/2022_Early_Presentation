@@ -975,6 +975,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _price: 1
+  _productSpeed: 10
   _product: 1
 --- !u!114 &1841197303
 MonoBehaviour:
@@ -1022,7 +1023,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1841197302}
         m_TargetAssemblyTypeName: AutoCount, Assembly-CSharp
-        m_MethodName: OnClick
+        m_MethodName: OnBuyAutoCounter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

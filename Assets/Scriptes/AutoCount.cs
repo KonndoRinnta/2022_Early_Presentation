@@ -1,56 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Timers;
+using System.Numerics;
 using System.IO;
 
-public class AutoCount : MonoBehaviour
+public class AutoCount : ItemBase
 {
     [SerializeField]
-    [Header("ƒAƒCƒeƒ€‚Ì‰¿Ši")]
-    int _price  = 50;
+    [Header("1‰ñ¶ŽY‚·‚éŽžŠÔ(•b)")]
+    float _productSpeed = 10f;
 
     [SerializeField]
-    [Header("1‰ñ¶ŽY‚·‚éŽžŠÔ(•b)")] 
-    int _productSpeed = 10;
-
-    [SerializeField]
-    [Header("1‰ñ‚É¶ŽY‚·‚é”")] 
-    int _product = 1;
-
-    [Header("w“ü‰ñ”")] 
-    int _clickCounter;
-
-    private GrapeCounter _grapeCounter = new GrapeCounter();
+    [Header("1‰ñ‚É¶ŽY‚·‚é”")]
+    BigInteger _product = 1;
 
     public void OnBuyAutoCounter()
     {
-        if (_grapeCounter.Grape > _price)
+        Debug.Log(GrapeCounter._grape);
+        if (GrapeCounter._grape > _price -1)
         {
-            if (_clickCounter < 1)
+            if (ClickCounter == 0)
             {
-                AutoProduct();
-                _clickCounter++;
+                StartCoroutine(AutoProduct());
+                ChangeClickCounter(1);
             }
             else
             {
                 _product *= 2;
-                _clickCounter++;
+                ChangeClickCounter(1);
             }
-            if (_clickCounter % 5 == 0 && _clickCounter != 0)
+            if (ClickCounter % 5 == 0 && ClickCounter != 0)
             {
-                _productSpeed -= 1;
+                _productSpeed /= 2;
             }
+            GrapeCounter._grape -= _price;
             _price *= 2;
+            Debug.Log("ƒI[ƒgƒJƒEƒ“ƒ^[w“ü" + ClickCounter + "‰ñ–Ú");
+        }
+        else
+        {
+            Debug.Log("ŠŽ‹à‚ª‘«‚è‚Ü‚¹‚ñ");
         }
     }
-    private IEnumerator AutoProduct()
+    public IEnumerator AutoProduct()
     {
         while(true)
         {
-            _grapeCounter.Grape += _product;
             yield return new WaitForSeconds(_productSpeed);
-            _grapeCounter.Grape += _product;
+            GrapeCounter._grape += _product;
+            Debug.Log("Ž©“®¶¬");
         }
     }
 }

@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Numerics;
 
-public class GrapeCounter : MonoBehaviour
+public class GrapeCounter
 {
-    public int Grape { get => grape; set => grape = value; }
     /// <summary>所持しているぶどうの数</summary>
     [SerializeField]
     [Header("所持しているぶどうの数")]
-    private int grape = 0;
+    public static BigInteger _grape = 0;
 
     /// <summary>1クリックに増やすぶどうの数</summary>
     [SerializeField]
     [Header("1クリックに増やすぶどうの数")]
-    int _oneClickCount = 1;
+    public static BigInteger _oneClickCount = 1;
 
     [SerializeField]
     [Header("所持しているぶどうの数のテキスト")]
@@ -22,12 +22,12 @@ public class GrapeCounter : MonoBehaviour
 
     public void Update()
     {
-        _grapeText.text = Grape.ToString();
+        _grapeText.text = _grape.ToString();
     }
 
     /// <summary>Buttonをクリックしたらぶどうを増やす</summary>
     public void OnClickCount()
     {
-        Grape += _oneClickCount;
+        _grape += _oneClickCount;
     }
 }

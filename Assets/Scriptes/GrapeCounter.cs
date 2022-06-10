@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Numerics;
 
-public class GrapeCounter
+public class GrapeCounter : MonoBehaviour
 {
     /// <summary>Š‚µ‚Ä‚¢‚é‚Ô‚Ç‚¤‚Ì”</summary>
     [SerializeField]

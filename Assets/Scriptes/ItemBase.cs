@@ -25,6 +25,14 @@ public class ItemBase : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
     [Header("購入回数テキスト")]
     Text _buyCountText;
 
+    [SerializeField]
+    [Header("購入不足テキスト")]
+    GameObject _lackText;
+
+    [SerializeField]
+    [Header("購入不足テキストの表示時間")]
+    float _displayTime;
+
     /// <summary>購入回数</summary>
     int _clickCounter;
 
@@ -48,5 +56,11 @@ public class ItemBase : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
     {
         _clickCounter += clickCounter;
         return clickCounter;
+    }
+    public IEnumerator NotBuyText()
+    {
+        _lackText.SetActive(true);
+        yield return new WaitForSeconds(_displayTime);
+        _lackText.SetActive(false);
     }
 }

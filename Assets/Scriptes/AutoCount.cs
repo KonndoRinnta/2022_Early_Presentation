@@ -28,12 +28,12 @@ public class AutoCount : ItemBase
             }
             else
             {
-                _product *= 2;
+                _productSpeed /= 2;
                 ChangeClickCounter(1);
             }
             if (ClickCounter % 5 == 0 && ClickCounter != 0)
             {
-                _productSpeed /= 2;
+                _product *= 2;
             }
             GrapeCounter._grape -= _price;
             _price *= 2;
